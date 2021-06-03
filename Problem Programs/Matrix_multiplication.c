@@ -1,4 +1,3 @@
-// This code only works for square matrix.
 #include <stdio.h>
 #define row 4
 #define column 4
