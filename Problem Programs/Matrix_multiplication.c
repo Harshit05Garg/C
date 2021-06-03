@@ -1,42 +1,39 @@
+// This program does matrix multiplication for 2 matrices.
 #include <stdio.h>
-#define row 4
-#define column 4
+#define row 2
+#define column 2
+#define row2 2
+#define column2 2
 int main()
 {
-    int arr[3][row][column] = {
-        {
-            {1,2,3,1},
-            {1,2,1,1},
-            {3,1,2,1},
-            {1,1,1,1}
-        },
-        {
-            {1,2,3,1},
-            {1,2,1,1},
-            {3,1,2,1},
-            {1,1,1,1}
-        }
+    if(column != row2)
+    {
+        printf("These two matrices have no resultant matrix.");
+        return 0;
+    }
+    int matrix[row][column] = {
+        {9,5},
+        {8,2}
     };
-    int i ,j, k, a = 0, b = 0, loop = 0;
+    int matrix2[row2][column2] = {
+        {5,2},
+        {5,6}
+    };
+    int resultant_matrix[row][column2] = {0};
+    int i, j, k, loop = 0;
     for(i=0; i<row; i++)
     {
-        for(j=0; j<column; j++)
+        for(j=0; j<column2; j++)
         {
-            int result = 0;
-            for(k=0; k<row; k++)
+            int sum = 0;
+            for(k=0; k<column; k++)
             {
-                result = result + (arr[0][i][k] * arr[1][k][j]);
+                sum = sum + (matrix[i][k] * matrix2[k][j]);
             }
-            arr[2][a][b] = result;
-            printf("%d ", arr[2][a][b]);
-            b++;
-            if(b == column && a < row-1)
-            {
-                b = 0;
-                a++;
-            }
+            resultant_matrix[i][j] = sum;
+            printf("%d ", resultant_matrix[i][j]);
             loop++;
-            if(loop == column)
+            if(loop == column2)
             {
                 printf("\n");
                 loop = 0;
@@ -44,4 +41,4 @@ int main()
         }
     }
     return 0;
-}
+} 
