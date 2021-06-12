@@ -3,15 +3,10 @@
 int main()
 {
     int arr[] = {1,2,3,4};
-    int i, ele = sizeof arr / sizeof arr[0], j;
-    for(i=0; i < ele; i++)
-    {
-        int sum = 0;
-        for(j=0; j <= i; j++)
-        {
-            sum += arr[j];
-        }
-        printf("%d ", sum);
-    }
+    int ele = sizeof arr / sizeof arr[0], j;
+    for(int i = 1; i < ele; i++)
+        arr[i] += arr[i-1];
+    for(int i = 0; i < ele; i++)
+        printf("%d ", arr[i]);
     return 0;
 }
